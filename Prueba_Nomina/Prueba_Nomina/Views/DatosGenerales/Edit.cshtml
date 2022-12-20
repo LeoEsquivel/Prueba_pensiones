@@ -1,0 +1,245 @@
+﻿@model Prueba_Nomina.Entities.Pensionado
+
+@{
+    ViewData["Title"] = "Editar Pensionado";
+}
+
+<style>
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+
+</style>
+
+<h1>Editar</h1>
+
+<h4>Pensionado</h4>
+<hr />
+<div class="row">
+    <div class="col-3">
+        <div class="col mb-5">
+            <label><strong>STATUS DE PAGO <span id="date">12/2022</span></strong></label>
+            <div>No pagado</div>
+        </div>
+
+        <div>
+            <img class="img-thumbnail" src="https://img.freepik.com/foto-gratis/hombre-serio-afeitar-apariencia-agradable-cabello-oscuro-cerdas-contempla-algo-importante-vestido-ropa-fashioable-aislado-sobre-pared-blanca-hombre-europeo-interior_273609-16093.jpg?w=996&t=st=1671416498~exp=1671417098~hmac=76b73468b7d3432ded116e6d9a55be39645cd31c3265a2bc360f2f1fe790b585" />
+        </div>
+    </div>
+    <div class="col-7">
+        <div class="row">
+            <div class="col">
+                <form id="formPensionado" asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="row">
+                        <div class="col bg-white rounded">
+                            <div class="col pb-3">
+                                <label for="tipo">No. Activo</label>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <input asp-for="No_activo" class="form-control" />
+                                        <span asp-validation-for="No_activo" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col bg-white rounded">
+                            <div class="col">
+                                <label>Cobro indebido</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" asp-for="Cobro_indebido" />
+                                    <label class="form-check-label" for="cobro_indebido">
+                                        Convenio
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col bg-white rounded">
+                            <div class="col pb-3">
+                                <label for="tipo">Clave pensión</label>
+                                <div class="col">
+                                    <input asp-for="Clave_pension" class="form-control" />
+                                    <span asp-validation-for="Clave_pension" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col bg-white rounded">
+                            <div class="col pb-3">
+                                <label for="tipo">No. Afiliado</label>
+                                <div class="col">
+                                    <input asp-for="No_afiliado" class="form-control" />
+                                    <span asp-validation-for="No_afiliado" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col bg-white rounded">
+                            <div class="col">
+                                <label>No. Pensión</label>
+                                <input asp-for="No_pension" class="form-control" />
+                                <span asp-validation-for="No_pension" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col bg-white rounded">
+                            <label>Sexo</label>
+                            <div class="form-group">
+                                <div class="col">
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.Sexo, 0)
+                                        <label class="form-check-label" for="sexo_m">
+                                            Masculino
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.Sexo, 1)
+                                        <label class="form-check-label" for="sexo_f">
+                                            Femenino
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col bg-white rounded">
+                            <div class="col pb-3">
+                                <label for="tipo">Apellido Paterno</label>
+                                <div class="col">
+                                    <input asp-for="ApellidoP" class="form-control" />
+                                    <span asp-validation-for="ApellidoP" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col bg-white rounded">
+                            <label>Apellido Materno</label>
+                            <div class="col">
+                                <input asp-for="ApellidoM" class="form-control" />
+                                <span asp-validation-for="ApellidoM" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col bg-white rounded">
+                            <div class="col">
+                                <label>Nombre</label>
+                                <input asp-for="Nombre" class="form-control" />
+                                <span asp-validation-for="Nombre" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col bg-white rounded">
+                            <div class="col pb-3">
+                                <label for="tipo">Fecha de Nacimiento</label>
+                                <div class="col">
+                                    <input asp-for="Fecha_nacimiento" type="date" class="form-control" />
+                                    <span asp-validation-for="Fecha_nacimiento" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col bg-white rounded">
+                            <div class="col">
+                                <label>RFC</label>
+                                <input asp-for="RFC" class="form-control" minlength="13" maxlength="13" />
+                                <span asp-validation-for="RFC" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col bg-white rounded">
+                            <div class="col">
+                                <label>CURP</label>
+                                <input asp-for="CURP" class="form-control" minlength="18" maxlength="18" />
+                                <span asp-validation-for="CURP" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Estado civil, tipo pension-->
+                    <div class="row">
+                        <div class="col bg-white rounded">
+                            <div class="col pb-3">
+                                <label for="tipo">Estado civil</label>
+                                <div class="col">
+                                    <select asp-for="Estado_civilId" class="form-control" asp-items="ViewBag.Estado_civilId"></select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col bg-white rounded">
+                            <div class="col pb-3">
+                                <label for="tipo">Tipo de pensión</label>
+                                <div class="col">
+                                    <select asp-for="Tipo_PensionId" class="form-control" asp-items="ViewBag.Tipo_PensionId"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Email-->
+                    <div class="row">
+                        <div class="col-6 bg-white rounded">
+                            <div class="col pb-3">
+                                <label for="tipo">Email</label>
+                                <div class="col">
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Status_pago" /> @Html.DisplayNameFor(model => model.Status_pago)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Sexo" /> @Html.DisplayNameFor(model => model.Sexo)
+                        </label>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-2">
+        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+            <button id="btnGuardar" type="button" class="btn btn-primary">Guardar</button>
+            <a id="btnEditar" asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Modificar</a>
+            <a id="btnCancelar" asp-action="Index" type="button" class="btn btn-primary">Cancelar</a>
+            <button id="btnAviso" type="button" class="btn btn-primary">Imprimir aviso</button>
+            <button id="btnConstancia" type="button" class="btn btn-primary">Constancia</button>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/datosgenerales.js" asp-append-version="true"></script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

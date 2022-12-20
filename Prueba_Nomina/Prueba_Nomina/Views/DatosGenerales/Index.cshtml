@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Prueba_Nomina.Entities.Pensionado>
+
+@{
+    ViewData["Title"] = "Pensionado";
+}
+
+<h1>Pensionados</h1>
+
+<p>
+    <a asp-action="Create">Agregar nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                No. Activo
+            </th>
+            <th>
+                Clave pensión
+            </th>
+            <th>
+                Apellido Paterno
+            </th>
+            <th>
+                Apellido Materno
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.No_activo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clave_pension)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Editar" >
+                   <a asp-action="Edit" asp-route-id="@item.Id" class="edit" ><i class="fa-solid fa-pen-to-square"></i></a> |
+                </span>
+                <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-regular fa-file-lines"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="delete"><i class="fa-solid fa-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="confirmarModal" tabindex="-1" aria-labelledby="confirmarModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Desea eliminar este registro?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>

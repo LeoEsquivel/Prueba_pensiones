@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Pensionados</h1>
+    <button id="btnAgregar" type="button" class="btn btn-primary mb-3">Agregar nuevo</button>
+</div>
+
+<div id="listado_pensionados-contenedor" class="text-center">
+    <div class="text-start" data-bind="foreach: pensionados">
+        <div name="pensioando" class="border mb-2 p-2" style="cursor: pointer">
+            <div data-bind="text: nombre" class="fw-bold">
+
+            </div>
+        </div>
+    </div>
+
+    <div data-bind="visible: cargando" class="spinner-border">
+        <span class="visually-hidden">Cargando...</span>
+    </div>
+
+    <div data-bind="visible: noHayPensionados">
+        No hay pensionados que mostrar.
+    </div>
+
+</div>
+
+@section Scripts {
+
+    <script src="~/js/index.js" asp-append-version="true"></script>
+    <script>
+
+        /*function IndexListadoViewModelFn() {
+            var self = this;
+            self.pensionados = ko.observableArray([]);
+            self.cargando = ko.observable(true);
+
+            self.noHayPensionados = ko.pureComputed( function() {
+                if (self.cargando()) {
+                    return false;
+                }
+
+                return self.pensionados().length === 0;
+            })
+        }
+
+        function pensionadoElementoListadoViewModel({id, nombre}) {
+            var self = this;
+
+            self.id = ko.observable(id);
+            self.nombre = ko.observable(titulo);
+            self.isNew = ko.pureComputed(()=> {
+                return self.id == 0;
+            })
+        }
+
+        const IndexListadoViewModel = new IndexListadoViewModelFn();
+
+        setTimeout( () => {
+           IndexListadoViewModel.pensionados.push({nombre: 'Pedro'}),
+           IndexListadoViewModel.cargando(false)
+        }, 2000);
+
+
+        ko.applyBindings(IndexListadoViewModel, document.getElementById('listado_pensionados-contenedor'));*/
+    </script>
+}
